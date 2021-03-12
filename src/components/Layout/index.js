@@ -1,7 +1,9 @@
 import style from './style.module.css'
 
 const Layout = ({id, title, desc, urlBg = false, colorBg = false}) => {
-    const styleBg = urlBg ? {backgroundImage: `url(${urlBg})`}: {background: `${colorBg}`}
+    const styleBg = {}; 
+    if (urlBg) { styleBg.backgroundImage = `url(${urlBg})` }
+    if (colorBg) { styleBg.backgroundColor = colorBg }
     return (
         <>
             <section 
