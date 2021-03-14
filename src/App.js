@@ -4,7 +4,7 @@ import Footer from './components/Footer';
 import PokemonCard from './components/PokemonCard';
 
 import bgLayout from './assets/Layout/bg1.jpg';
-import style from './App.css';
+import './App.css';
 
 
 const titleText = "Title text";
@@ -170,7 +170,7 @@ Each player has five cards in a hand and the aim is to capture the opponent's ca
                 colorBg={color}
                 colorBg="#202736"
             >
-                <div className={style.flex}>
+                <div className="flex">
                     {
                         POKEMONS.map(item => <PokemonCard key={item.id} {...item} />)
                     }
