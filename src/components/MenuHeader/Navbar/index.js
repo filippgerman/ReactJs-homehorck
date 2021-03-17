@@ -1,19 +1,16 @@
 import style from './style.module.css';
 import cn from 'classnames';
 
-const Nav = ({ onChange}) => {
-    const onClickLigo = (value) => {
-       onChange && onChange(value);
-    }
+const Nav = ({ isActive, onChange}) => {
     return (
         <nav className={style.root}>
           <div className={style.navWrapper}>
-            <p className={style.brand} onClick={() => onClickLigo(true)}>
+            <p className={style.brand} >
               LOGO
             </p>
-            <a className={cn(style.menuButton,  style.active)} onClick={() => onClickLigo(false)}>
+            <div className={cn(style.menuButton,  {[style.active]: isActive})} onClick={onChange}>
               <span />
-            </a>
+            </div>
           </div>
         </nav>
     );

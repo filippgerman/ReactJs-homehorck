@@ -1,32 +1,15 @@
 import style from './style.module.css';
 import cn from 'classnames';
 
+
+const routs = ["HOME", "GAME", "ABOUT", "CONTACT"];
 const Menu = ({onMenu}) => {
     return (
-        <div className={cn(style.menuContainer, {[style.active]: onMenu}, {[style.deactive]: !onMenu})}>
+        <div className={cn(style.menuContainer, {[style.active]: onMenu === true, [style.deactive]: onMenu === false})}>
           <div className={style.overlay} />
           <div className={style.menuItems}>
             <ul>
-              <li>
-                <a href="#welcome">
-                  HOME
-                </a>
-              </li>
-              <li>
-                <a href="#game">
-                  GAME
-                </a>
-              </li>
-              <li>
-                <a href="#about">
-                  ABOUT
-                </a>
-              </li>
-              <li>
-                <a href="#contact">
-                  CONTACT
-                </a>
-              </li>
+            {routs.map((rout) => <li> <a href="#">{rout}</a> </li>)}
             </ul>
           </div>
         </div>

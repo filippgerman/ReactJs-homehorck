@@ -3,14 +3,14 @@ import Nav from './Navbar';
 import { useState } from 'react';
 
 const MenuHeader = () => {
-    const [isActiv, setPage] = useState(false);
-    const onChangePage = (value) => {
-        setPage(value); 
+    const [isActive, setActive] = useState(null);
+    const onChange = () => {
+        setActive(prevState => !prevState);
     }
     return (
         <>
-            <Menu onMenu={isActiv}/>
-            <Nav onChange={onChangePage}/>
+            <Menu onMenu={isActive}/>
+            <Nav isActive={isActive} onChange={onChange}/>
         </>
     );
 };
