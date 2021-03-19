@@ -7,16 +7,7 @@ import style from './style.module.css';
 const GamePage = ({ onChangePage }) => {
     const [pokemons, setPokemons] = useState(POKEMONS);
     const getIdCart = (id) => {
-        setPokemons(prevState => {
-          prevState.forEach(element => {
-            if(element.id == id){
-              element.isActive = !element.isActive;
-              return;
-            }
-
-          });
-          return [...prevState];
-        })
+    setPokemons(prevState => prevState.map(item => item.id === id ? { ...item, isActive: !item.isActive } : item))
     }
     return(
         <Layout
