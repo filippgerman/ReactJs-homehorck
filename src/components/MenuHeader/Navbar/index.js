@@ -1,9 +1,9 @@
 import style from './style.module.css';
 import cn from 'classnames';
 
-const Nav = ({ isActive, onChange}) => {
+const Nav = ({ isActive, onChange, bgActive}) => {
     return (
-        <nav className={style.root}>
+        <nav className={cn( style.root, {[style.bgActive]: bgActive})}>
           <div className={style.navWrapper}>
             <p className={style.brand} >
               LOGO

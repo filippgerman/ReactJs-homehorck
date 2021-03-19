@@ -1,14 +1,32 @@
+import Layout from '../../components/Layout';
+import { useState } from 'react';
+import PokemonCard from '../../components/PokemonCard';
+import POKEMONS from '../../components/PokemonCard/pokemoncart.js';
+import style from './style.module.css';
+
 const GamePage = ({ onChangePage }) => {
-    const onBackClick = () => {
-        onChangePage && onChangePage('app');
+    const [pokemons, setPokemons] = useState(POKEMONS);
+    const getIdCart = (id) => {
+    setPokemons(prevState => prevState.map(item => item.id === id ? { ...item, isActive: !item.isActive } : item))
     }
     return(
-        <div>
-            This is game Page!!
-            <button onClick={onBackClick}>
-                Back on head page
-            </button>
-        </div>
+        <Layout
+            id="cards"
+            title="Title"
+            colorBg="#fafafa"
+            colorBg="#202736"
+        >
+            <div className={style.flex}>
+                {
+                    pokemons.map(item=> <PokemonCard key={item.id} 
+                        onChangeCart={getIdCart} 
+                        {...item}
+                        />)
+
+                }
+            </div>
+        
+        </Layout>
     );
 };
 
