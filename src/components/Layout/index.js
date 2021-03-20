@@ -1,10 +1,14 @@
 import style from './style.module.css';
 import cn from "classnames";
 
-const Layout = ({id, title, urlBg = false, colorBg = false, children = false}) => {
+const Layout = ({id, title, urlBg = false, colorBg = false, children = false, addPokemon=false}) => {
     const styleBg = {}; 
     if (urlBg) { styleBg.backgroundImage = `url(${urlBg})` }
     if (colorBg) { styleBg.backgroundColor = colorBg }
+
+    const clickButton = () => {
+        addPokemon && addPokemon();
+    }
     return (
         <section 
             className={style.root} 
@@ -16,6 +20,7 @@ const Layout = ({id, title, urlBg = false, colorBg = false, children = false}) =
                     <div className={style.title}>
                         <h3>{title}</h3>
                         <span className={style.separator}></span>
+                        <button onClick={clickButton}>Add pokemon</button>
                     </div>
                     <div className={cn(style.desc, style.full)}>
                         {children}
@@ -26,4 +31,4 @@ const Layout = ({id, title, urlBg = false, colorBg = false, children = false}) =
     );
 }
 
-export default Layout
+export default Layout;
