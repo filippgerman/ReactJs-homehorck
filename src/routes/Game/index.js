@@ -27,16 +27,7 @@ const GamePage = ({ onChangePage }) => {
                 const pokemon = {...item[1]};
                 if (pokemon.id === pokemon_id) {
                     database.ref('pokemons/'+ item[0]).set({
-                        abilities: item[1].abilities,
-                        base_experience: item[1].base_experience,
-                        height: item[1].height,
-                        id: item[1].id,
-                        img: item[1].img,
-                        name: item[1].name,
-                        stats: item[1].stats,
-                        type: item[1].type,
-                        values: item[1].values,
-                        weight: item[1].weight,
+                        ...pokemon,
                         active: !pokemon.active
                     });
                     pokemon.active = !pokemon.active;
@@ -51,23 +42,13 @@ const GamePage = ({ onChangePage }) => {
 
     const addPokemonsDB = () => {
         setPokemons(prevState => {
-                const data = Object.entries(pokemons)[0][1];
+                const data = Object.values(pokemons)[0];
 
                 const newKey = database.ref().child('pokemons').push().key;
                 database.ref('pokemons/' + newKey).set({
-                    abilities: data.abilities,
-                    base_experience: data.base_experience,
-                    height: data.height,
-                    id: data.id,
-                    img: data.img,
-                    name: data.name,
-                    stats: data.stats,
-                    type: data.type,
-                    values: data.values,
-                    weight: data.weight
+                    ...data
                 });
         });
-
     }
 
     return(
