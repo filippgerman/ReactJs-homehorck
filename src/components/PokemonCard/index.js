@@ -2,7 +2,7 @@ import { useState } from 'react'; import cn from 'classnames';
 import CardBackSide from './assets/card-back-side.jpg';
 import style from './style.module.css';
 
-const PokemonCard = ({name, img, values, id, type, onChangeCart, isActive=false}) => {
+const PokemonCard = ({name, img, values, id, type, onChangeCart, active=false}) => {
 
     const getIdCart = () => {
         onChangeCart && onChangeCart(id);
@@ -10,7 +10,7 @@ const PokemonCard = ({name, img, values, id, type, onChangeCart, isActive=false}
 
     return (
         <div className={style.root} onClick={getIdCart}>
-              <div className={cn(style.pokemonCard, {[style.active]: isActive})}>
+              <div className={cn(style.pokemonCard, {[style.active]: active})}>
                 <div className={style.cardFront}>
                     <div className={cn(style.wrap, style.front)}>
                         <div className={cn(style.pokemon , style[type])}>
