@@ -20,7 +20,6 @@ const Layout = ({id, title, urlBg = false, colorBg = false, children = false, ad
                     <div className={style.title}>
                         <h3>{title}</h3>
                         <span className={style.separator}></span>
-                        <button onClick={clickButton}>Add pokemon</button>
                     </div>
                     <div className={cn(style.desc, style.full)}>
                         {children}
